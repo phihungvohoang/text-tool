@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="https://fontawesome.com/v4/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <body>
+        <div class="container">
+            <div class="form-group">
+                <h3 align="center">Tools đổi kiểu chữ</h3>
+                <textarea class="form-control" id="myInput" name="myInput" cols="50" placeholder="Nhập j đi..."></textarea>
+                <br>
+                <button class="btn btn-primary" onclick="convertToUppercase()">Convert to Uppercase</button>
+                <button class="btn btn-success" onclick="convertToLowercase()">Convert to LowerCase</button>
+                <button class="btn btn-warning" onclick="convertToTitleCase()">Convert to TitleCase</button>
+                <button class="btn btn-info" onclick="copyToClipboard()">Copy to Clipboard</button>
+            </div>
+        </div>
+        <script>
+            function convertToUppercase() {
+                var input = document.getElementById("myInput");
+                input.value = input.value.toUpperCase();
+                input.select();
+                document.execCommand("copy");
+            }
+
+            function convertToLowercase() {
+                var input = document.getElementById("myInput");
+                input.value = input.value.toLowerCase();
+                input.select();
+                document.execCommand("copy");
+            }
+
+            function convertToTitleCase() {
+                var input = document.getElementById("myInput");
+                var words = input.value.split(" ");
+                for (var i = 0; i < words.length; i++) {
+                    var word = words[i];
+                    words[i] = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                }
+                input.value = words.join(" ");
+                input.select();
+                document.execCommand("copy");
+            }
+
+        </script>
+    </body>
+</html>
